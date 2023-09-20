@@ -17,7 +17,7 @@ public class PickMethod extends JFrame
         ms.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
-                new Counter().Initial(shinycharm, 1, 0, 0);
+                new FileShit().Initial(shinycharm, 1, 0, 0);
             }
         });
         ms.setFocusPainted(false);
@@ -32,7 +32,7 @@ public class PickMethod extends JFrame
         sw.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
-                new Counter().Initial(shinycharm, 0, 1, 0);
+                new FileShit().Initial(shinycharm, 0, 1, 0);
             }
         });
         sw.setFocusPainted(false);
@@ -47,7 +47,7 @@ public class PickMethod extends JFrame
         ob.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
-                new Counter().Initial(shinycharm, 0, 0, 1);
+                new FileShit().Initial(shinycharm, 0, 0, 1);
             }
         });
         ob.setFocusPainted(false);
@@ -62,7 +62,7 @@ public class PickMethod extends JFrame
         obsw.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
-                new Counter().Initial(shinycharm, 0, 0, 0);
+                new FileShit().Initial(shinycharm, 0, 0, 0);
             }
         });
         obsw.setFocusPainted(false);

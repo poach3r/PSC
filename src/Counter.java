@@ -7,7 +7,8 @@ public class Counter extends JFrame
     implements ActionListener
 {
     JFrame f = new JFrame("PSC");
-    public int i = 0, n = 0;
+    public int i = 0;
+    public int n = 0;
     public void Initial(int shinycharm, int ms, int sw, int ob) {
         Container c = f.getContentPane();
         Font myFont = new Font("Arial", Font.BOLD, 12);
