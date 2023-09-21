@@ -15,6 +15,7 @@ public class Counter extends JFrame
         File file = new File(fileString);
         //scans file and sets encounters
         Scanner reader = new Scanner(file);
+        reader.hasNextLine();
         i = reader.nextInt();
         reader.close();
         
