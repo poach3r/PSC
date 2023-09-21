@@ -2,14 +2,23 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.event.*;
+import java.util.Scanner;
+import java.io.*;
 
 public class Counter extends JFrame
     implements ActionListener
 {
     JFrame f = new JFrame("PSC");
-    public int i = 0;
-    public int n = 0;
-    public void Initial(int shinycharm, int ms, int sw, int ob) {
+    public int i = 0; //shiny encounters
+    public int n = 0; //hunting method
+    public void Initial(int shinycharm, int ms, int sw, int ob, String fileString) throws IOException {
+        File file = new File(fileString);
+        //scans file and sets encounters
+        Scanner reader = new Scanner(file);
+        reader.hasNextLine();
+        i = reader.nextInt();
+        reader.close();
+        
         Container c = f.getContentPane();
         Font myFont = new Font("Arial", Font.BOLD, 12);
         c.setBackground(Color.BLACK);  
@@ -25,6 +34,7 @@ public class Counter extends JFrame
         plus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
                 i++;
+                writeFile(i, fileString);
                 count.setText("" + i);
             }
         });
@@ -40,6 +50,7 @@ public class Counter extends JFrame
         minus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
                 i--;
+                writeFile(i, fileString);
                 count.setText("" + i);
             }
         });
@@ -89,6 +100,7 @@ public class Counter extends JFrame
                     eh.setText("You were at odds!");
             }
         });
+
         eh.setFocusPainted(false);
         eh.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
         eh.setBounds(0, 150, 200, 52);
@@ -101,6 +113,20 @@ public class Counter extends JFrame
         f.setLayout(null); 
         f.setVisible(true);
         f.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public void writeFile(int i, String fileString) {
+        File file = new File(fileString);
+        String iString = String.valueOf(i);
+        file.delete();
+        try {
+            FileWriter writer = new FileWriter(fileString);;
+            file.createNewFile();
+            writer.write(iString);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void actionPerformed(ActionEvent e) {

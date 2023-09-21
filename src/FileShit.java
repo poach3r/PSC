@@ -34,22 +34,16 @@ public class FileShit extends JFrame
         JButton enter = new JButton("Enter");
         enter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
-                file = enterFilename.getText();
-                File myObj = new File(enterFilename.getText());
+                String fileString = (enterFilename.getText() + ".txt");
+                File file = new File(fileString);
                 try {
-                    if (myObj.createNewFile()) {
-                        System.out.println("File created: " + myObj.getName());
-                    } 
-                    else {
-                         System.out.println("File already exists.");
+                    if(file.createNewFile() == true) {
+                        FileWriter writer = new FileWriter(fileString);
+                        writer.write("0");
+                        writer.close();
                     }
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-                try (FileReader test = new FileReader(file)) {
-                    BufferedReader br = new BufferedReader(test);
-                    int value = Integer.parseInt(br.readLine());
-                    new Counter().Initial(shinycharm, 0, 1, 0);
+                    f.dispose();
+                    new Counter().Initial(shinycharm, 0, 1, 0, fileString);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
