@@ -7,6 +7,6 @@ A small and offline shiny counter for Scarlet and Violet written in Java.
 ## TODO
 
 1. Add comments
-2. Refactor code
-3. SwSh support
-4. Android port (kotlin?)
+2. SwSh support
+3. Android port (kotlin?)
+4. 3DS port (???)
