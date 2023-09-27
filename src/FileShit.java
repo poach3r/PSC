@@ -7,14 +7,21 @@ import java.io.*;
 public class FileShit extends JFrame
     implements ActionListener
 {
-    JFrame f = new JFrame("PSC");
-    JTextField enterFilename;
-    String file;
-    public void Initial(int shinycharm, int ms, int sw, int ob) {
-        Container c = f.getContentPane();
-        Font myFont = new Font("Arial", Font.BOLD, 12);
-        c.setBackground(Color.BLACK);  
+    public static JFrame f = new JFrame("PSC");
+    public static JTextField enterFilename;
+    public static String file;
+    public static Font myFont = new Font("Arial", Font.BOLD, 12);
 
+    private static void setDisplay() {
+        Container c = f.getContentPane();
+        c.setBackground(Color.BLACK);  
+        f.setSize(216, 192);
+        f.setLayout(null); 
+        f.setVisible(true);
+        f.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    private static void enterFilenameLabel() {
         JLabel filenameLabel = new JLabel("Enter Filename: ");
         filenameLabel.setBounds(0, 0, 200, 52);
         filenameLabel.setFont(myFont);
@@ -22,7 +29,9 @@ public class FileShit extends JFrame
         filenameLabel.setForeground(Color.WHITE);
         filenameLabel.setBackground(Color.BLACK);
         f.add(filenameLabel);
+    }
 
+    private static void enterFilename() {
         enterFilename = new JTextField(5);
         enterFilename.setBounds(0, 50, 200, 52);
         enterFilename.setFont(myFont);
@@ -30,7 +39,9 @@ public class FileShit extends JFrame
         enterFilename.setForeground(Color.WHITE);
         enterFilename.setBackground(Color.BLACK);
         f.add(enterFilename);
+    }
 
+    private static void getEnter(int shinyCharm, int ms, int sw, int ob, int sr) {
         JButton enter = new JButton("Enter");
         enter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -43,7 +54,8 @@ public class FileShit extends JFrame
                         writer.close();
                     }
                     f.dispose();
-                    new Counter().Initial(shinycharm, 0, 1, 0, fileString);
+                    new Counter();
+                    Counter.main(shinyCharm, ms, sw, ob, sr, fileString);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -56,11 +68,13 @@ public class FileShit extends JFrame
         enter.setForeground(Color.WHITE);
         enter.setBackground(Color.BLACK);
         f.add(enter);
+    }
 
-        f.setSize(216, 192);
-        f.setLayout(null); 
-        f.setVisible(true);
-        f.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    public static void main(int shinyCharm, int ms, int sw, int ob, int sr) {
+        setDisplay();
+        enterFilenameLabel();
+        enterFilename();
+        getEnter(shinyCharm, ms, sw, ob, sr);
     }
 
     public void actionPerformed(ActionEvent e) {
