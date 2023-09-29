@@ -98,6 +98,9 @@ public class Counter extends JFrame
                     else
                         n = 819;
                 }
+                else if(sr == 1) {
+                    n = 4096;
+                }
                 else {
                     if(shinyCharm == 1)
                         n = 512;
