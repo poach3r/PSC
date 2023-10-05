@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.event.*;
+import java.io.*;
+import java.util.Scanner;
 
 public class PickMethod extends JFrame
     implements ActionListener
@@ -10,16 +12,31 @@ public class PickMethod extends JFrame
     public static JFrame f = new JFrame("PSC");
     public static int shinyCharm = 0;
 
-    private static void setLayout() {
+    private static Color[] setTheme() throws FileNotFoundException {
+        File themeDirector = new File("./PSC/themes/theme.txt");
+        Scanner directorReader = new Scanner(themeDirector);
+        String theme = directorReader.nextLine();
+        directorReader.close();
+        File colorFile = new File("./PSC/themes/" + theme + ".txt");
+        Scanner colorReader = new Scanner(colorFile);
+        Color main = Color.decode(colorReader.nextLine());
+        Color text = Color.decode(colorReader.nextLine());
+        Color border = Color.decode(colorReader.nextLine());
+        Color colorArray[] = {main, text, border};
+        colorReader.close();
+        return colorArray;
+    }
+
+    private static void setLayout(Color colors[]) {
         Container c = f.getContentPane();
-        c.setBackground(Color.BLACK);  
+        c.setBackground(colors[0]); 
         f.setSize(216, 342);
         f.setLayout(null); 
         f.setVisible(true);
         f.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    private static void getMs() {
+    private static void getMs(Color colors[]) {
         JButton ms = new JButton("Masuda Method");
         ms.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -29,15 +46,15 @@ public class PickMethod extends JFrame
             }
         });
         ms.setFocusPainted(false);
-        ms.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        ms.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         ms.setBounds(0, 0, 200, 52);
         ms.setFont(myFont);
-        ms.setForeground(Color.WHITE);
-        ms.setBackground(Color.BLACK);
+        ms.setBackground(colors[0]);
+        ms.setForeground(colors[1]);
         f.add(ms);
     }
     
-    private static void getSw() {
+    private static void getSw(Color colors[]) {
         JButton sw = new JButton("Sandwich");
         sw.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -47,15 +64,15 @@ public class PickMethod extends JFrame
             }
         });
         sw.setFocusPainted(false);
-        sw.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        sw.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         sw.setBounds(0, 50, 200, 52);
         sw.setFont(myFont);
-        sw.setForeground(Color.WHITE);
-        sw.setBackground(Color.BLACK);
+        sw.setBackground(colors[0]);
+        sw.setForeground(colors[1]);
         f.add(sw);
     }
 
-    private static void getOb() {
+    private static void getOb(Color colors[]) {
         JButton ob = new JButton("Outbreak");
         ob.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -65,15 +82,15 @@ public class PickMethod extends JFrame
             }
         });
         ob.setFocusPainted(false);
-        ob.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        ob.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         ob.setBounds(0, 100, 200, 52);
         ob.setFont(myFont);
-        ob.setForeground(Color.WHITE);
-        ob.setBackground(Color.BLACK);
+        ob.setBackground(colors[0]);
+        ob.setForeground(colors[1]);
         f.add(ob);
     }
 
-    private static void getSr() {
+    private static void getSr(Color colors[]) {
         JButton sr = new JButton("Soft Reset");
         sr.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -82,15 +99,15 @@ public class PickMethod extends JFrame
             }
         });
         sr.setFocusPainted(false);
-        sr.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        sr.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         sr.setBounds(0, 200, 200, 52);
         sr.setFont(myFont);
-        sr.setForeground(Color.WHITE);
-        sr.setBackground(Color.BLACK);
+        sr.setBackground(colors[0]);
+        sr.setForeground(colors[1]);
         f.add(sr);
     }
 
-    private static void getObsw() {
+    private static void getObsw(Color colors[]) {
         JButton obsw = new JButton("Outbreak + Sandwich");
         obsw.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -100,15 +117,15 @@ public class PickMethod extends JFrame
             }
         });
         obsw.setFocusPainted(false);
-        obsw.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        obsw.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         obsw.setBounds(0, 150, 200, 52);
         obsw.setFont(myFont);
-        obsw.setForeground(Color.WHITE);
-        obsw.setBackground(Color.BLACK);
+        obsw.setBackground(colors[0]);
+        obsw.setForeground(colors[1]);
         f.add(obsw);
     }
 
-    private static void getSc() {
+    private static void getSc(Color colors[]) {
         JButton sc = new JButton("Shiny Charm");
         sc.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -116,22 +133,23 @@ public class PickMethod extends JFrame
             }
         });
         sc.setFocusPainted(false);
-        sc.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        sc.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         sc.setBounds(0, 250, 200, 52);
         sc.setFont(myFont);
-        sc.setForeground(Color.WHITE);
-        sc.setBackground(Color.BLACK);
+        sc.setBackground(colors[0]);
+        sc.setForeground(colors[1]);
         f.add(sc);
     }
 
     public static void main(String[] args) throws Exception {
-        setLayout();
-        getMs();
-        getSw();
-        getOb();
-        getSr();
-        getObsw();
-        getSc();
+        Color colors[] = setTheme();
+        setLayout(colors);
+        getMs(colors);
+        getSw(colors);
+        getOb(colors);
+        getSr(colors);
+        getObsw(colors);
+        getSc(colors);
     }
     @Override
     public void actionPerformed(ActionEvent arg0) {

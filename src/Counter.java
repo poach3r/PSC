@@ -76,7 +76,7 @@ public class Counter extends JFrame
         f.add(minus);
     }
 
-    private static void getEh(int shinyCharm, int ms, int sw, int ob) {
+    private static void getEh(int shinyCharm, int ms, int sw, int ob, int sr) {
         JButton eh = new JButton("End Hunt");
         eh.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -150,6 +150,6 @@ public class Counter extends JFrame
         JLabel count = getCount();
         getPlus(fileString, count);
         getMinus(fileString, count);
-        getEh(shinyCharm, ms, sw, ob);
+        getEh(shinyCharm, ms, sw, ob, sr);
     }
 }

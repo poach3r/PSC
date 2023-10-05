@@ -45,8 +45,10 @@ public class FileShit extends JFrame
         JButton enter = new JButton("Enter");
         enter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
-                String fileString = (enterFilename.getText() + ".txt");
+                String fileString = ("./PSC/hunts/" + enterFilename.getText() + ".txt");
                 File file = new File(fileString);
+                File folder = new File("./PSC/hunts");
+                folder.mkdir();
                 try {
                     if(file.createNewFile() == true) {
                         FileWriter writer = new FileWriter(fileString);
