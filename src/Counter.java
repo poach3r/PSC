@@ -13,16 +13,16 @@ public class Counter extends JFrame
     public static int n = 0; //hunting method
     public static Font myFont = new Font("Arial", Font.BOLD, 12);
 
-    private static void setDisplay() {
+    private static void setDisplay(Color colors[]) {
         Container c = f.getContentPane();
-        c.setBackground(Color.BLACK);  
+        c.setBackground(colors[0]);
         f.setSize(216, 242);
         f.setLayout(null); 
         f.setVisible(true);
         f.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    private static void getReader(String fileString) throws FileNotFoundException {
+    private static void getReader(String fileString, Color colors[]) throws FileNotFoundException {
         File file = new File(fileString);
         Scanner reader = new Scanner(file);
         reader.hasNextLine();
@@ -30,17 +30,17 @@ public class Counter extends JFrame
         reader.close();
     }
 
-    private static JLabel getCount() {
+    private static JLabel getCount(Color colors[]) {
         JLabel count = new JLabel("" + i);
         count.setBounds(0, 0, 200, 52);
         count.setFont(myFont);
-        count.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
-        count.setForeground(Color.WHITE);
+        count.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
+        count.setForeground(colors[1]);
         f.add(count);
         return count;
     }
 
-    private static void getPlus(String fileString, JLabel count) {
+    private static void getPlus(String fileString, JLabel count, Color colors[]) {
         JButton plus = new JButton("+");
         plus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -50,15 +50,15 @@ public class Counter extends JFrame
             }
         });
         plus.setFocusPainted(false);
-        plus.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        plus.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         plus.setBounds(0, 50, 200, 52);
         plus.setFont(myFont);
-        plus.setForeground(Color.WHITE);
-        plus.setBackground(Color.BLACK);
+        plus.setForeground(colors[1]);
+        plus.setBackground(colors[0]);
         f.add(plus);
     }
 
-    private static void getMinus(String fileString, JLabel count) {
+    private static void getMinus(String fileString, JLabel count, Color colors[]) {
         JButton minus = new JButton("-");
         minus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -68,15 +68,15 @@ public class Counter extends JFrame
             }
         });
         minus.setFocusPainted(false);
-        minus.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        minus.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         minus.setBounds(0, 100, 200, 52);
         minus.setFont(myFont);
-        minus.setForeground(Color.WHITE);
-        minus.setBackground(Color.BLACK);
+        minus.setForeground(colors[1]);
+        minus.setBackground(colors[0]);
         f.add(minus);
     }
 
-    private static void getEh(int shinyCharm, int ms, int sw, int ob, int sr) {
+    private static void getEh(int shinyCharm, int ms, int sw, int ob, int sr, Color colors[]) {
         JButton eh = new JButton("End Hunt");
         eh.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
@@ -119,11 +119,11 @@ public class Counter extends JFrame
             }
         });
         eh.setFocusPainted(false);
-        eh.setBorder(new MatteBorder(2, 2, 2, 2, Color.WHITE));
+        eh.setBorder(new MatteBorder(2, 2, 2, 2, colors[2]));
         eh.setBounds(0, 150, 200, 52);
         eh.setFont(myFont);
-        eh.setForeground(Color.WHITE);
-        eh.setBackground(Color.BLACK);
+        eh.setForeground(colors[1]);
+        eh.setBackground(colors[0]);
         f.add(eh);
     }
 
@@ -144,12 +144,12 @@ public class Counter extends JFrame
     public void actionPerformed(ActionEvent e) {
     }
 
-    public static void main(int shinyCharm, int ms, int sw, int ob, int sr, String fileString) throws IOException {
-        getReader(fileString);
-        setDisplay();
-        JLabel count = getCount();
-        getPlus(fileString, count);
-        getMinus(fileString, count);
-        getEh(shinyCharm, ms, sw, ob, sr);
+    public static void main(int shinyCharm, int ms, int sw, int ob, int sr, String fileString, Color colors[]) throws IOException {
+        getReader(fileString, colors);
+        setDisplay(colors);
+        JLabel count = getCount(colors);
+        getPlus(fileString, count, colors);
+        getMinus(fileString, count, colors);
+        getEh(shinyCharm, ms, sw, ob, sr, colors);
     }
 }

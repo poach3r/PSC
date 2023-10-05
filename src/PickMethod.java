@@ -29,7 +29,7 @@ public class PickMethod extends JFrame
 
     private static void setLayout(Color colors[]) {
         Container c = f.getContentPane();
-        c.setBackground(colors[0]); 
+        c.setBackground(colors[0]);
         f.setSize(216, 342);
         f.setLayout(null); 
         f.setVisible(true);
@@ -42,7 +42,7 @@ public class PickMethod extends JFrame
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
                 new FileShit();
-                FileShit.main(shinyCharm, 1, 0, 0, 0);
+                FileShit.main(shinyCharm, 1, 0, 0, 0, colors);
             }
         });
         ms.setFocusPainted(false);
@@ -60,7 +60,7 @@ public class PickMethod extends JFrame
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
                 new FileShit();
-                FileShit.main(shinyCharm, 0, 1, 0, 0);
+                FileShit.main(shinyCharm, 0, 1, 0, 0, colors);
             }
         });
         sw.setFocusPainted(false);
@@ -78,7 +78,7 @@ public class PickMethod extends JFrame
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
                 new FileShit();
-                FileShit.main(shinyCharm, 0, 0, 1, 0);
+                FileShit.main(shinyCharm, 0, 0, 1, 0, colors);
             }
         });
         ob.setFocusPainted(false);
@@ -96,7 +96,7 @@ public class PickMethod extends JFrame
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
                 new FileShit();
-                FileShit.main(shinyCharm, 0, 0, 0, 1);
+                FileShit.main(shinyCharm, 0, 0, 0, 1, colors);
             }
         });
         sr.setFocusPainted(false);
@@ -114,7 +114,7 @@ public class PickMethod extends JFrame
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
                 new FileShit();
-                FileShit.main(shinyCharm, 0, 0, 0, 0);
+                FileShit.main(shinyCharm, 0, 0, 0, 0, colors);
             }
         });
         obsw.setFocusPainted(false);
