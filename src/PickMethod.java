@@ -13,11 +13,11 @@ public class PickMethod extends JFrame
     public static int shinyCharm = 0;
 
     private static Color[] setTheme() throws FileNotFoundException {
-        File themeDirector = new File("./PSC/themes/theme.txt");
+        File themeDirector = new File(".\\themes\\theme.txt");
         Scanner directorReader = new Scanner(themeDirector);
         String theme = directorReader.nextLine();
         directorReader.close();
-        File colorFile = new File("./PSC/themes/" + theme + ".txt");
+        File colorFile = new File(".\\themes\\" + theme + ".txt");
         Scanner colorReader = new Scanner(colorFile);
         Color main = Color.decode(colorReader.nextLine());
         Color text = Color.decode(colorReader.nextLine());
@@ -94,6 +94,7 @@ public class PickMethod extends JFrame
         JButton sr = new JButton("Soft Reset");
         sr.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
+                f.dispose();
                 new FileShit();
                 FileShit.main(shinyCharm, 0, 0, 0, 1);
             }
