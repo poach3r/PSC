@@ -48,8 +48,6 @@ public class FileShit extends JFrame
                 //String fileString = ("./hunts/" + enterFilename.getText() + ".txt"); //LINUX
                 String fileString = (".\\hunts\\" + enterFilename.getText() + ".txt"); //WINDOWS
                 File file = new File(fileString);
-                File folder = new File("hunts");
-                folder.mkdir();
                 try {
                     if(file.createNewFile() == true) {
                         FileWriter writer = new FileWriter(fileString);
