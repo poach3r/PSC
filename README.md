@@ -8,7 +8,7 @@ Check my website for more info https://shinyhunt.me
 
 ## TODO
 
-1. Custom Font Support
-2. Add comments
-3. SwSh support
+1. More comments
+2. Phase support
+3. Custom Font Support
 4. Android port (kotlin?)

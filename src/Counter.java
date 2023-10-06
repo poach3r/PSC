@@ -10,7 +10,6 @@ public class Counter extends JFrame
 {
     public static JFrame f = new JFrame("PSC");
     public static int i = 0; //shiny encounters
-    public static int n = 0; //hunting method
     public static Font myFont = new Font("Arial", Font.BOLD, 12);
 
     private static void setDisplay(Color colors[]) {
@@ -76,44 +75,14 @@ public class Counter extends JFrame
         f.add(minus);
     }
 
-    private static void getEh(int shinyCharm, int ms, int sw, int ob, int sr, Color colors[]) {
+    private static void getEh(int n, Color colors[]) {
         JButton eh = new JButton("End Hunt");
         eh.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
-                if(ms == 1) {
-                    if(shinyCharm == 1)
-                        n = 512;
-                    else
-                        n = 682;
-                }
-                else if(sw == 1) {
-                    if(shinyCharm == 1)
-                        n = 683;
-                    else
-                        n = 1024;
-                }
-                else if(ob == 1) {
-                    if(shinyCharm == 1)
-                        n = 512;
-                    else
-                        n = 819;
-                }
-                else if(sr == 1) {
-                    n = 4096;
-                }
-                else {
-                    if(shinyCharm == 1)
-                        n = 512;
-                    else
-                        n = 683;
-                }
-                if(i > n) {
-                    eh.setText("You went " + (i / n) * 100 + "% over odds!");
-                }
-                else if(i < n) {
-
-                    eh.setText("You went " + (n / i) * 100 + "% under odds!");
-                }
+                if(i > n)
+                    eh.setText("You went " + (i - n) + " over odds!");
+                else if(i < n) 
+                    eh.setText("You went " + (n - i) + " under odds!");
                 else
                     eh.setText("You were at odds!");
             }
@@ -144,12 +113,12 @@ public class Counter extends JFrame
     public void actionPerformed(ActionEvent e) {
     }
 
-    public static void main(int shinyCharm, int ms, int sw, int ob, int sr, String fileString, Color colors[]) throws IOException {
+    public static void main(int n, String fileString, Color colors[]) throws IOException {
         getReader(fileString, colors);
         setDisplay(colors);
         JLabel count = getCount(colors);
         getPlus(fileString, count, colors);
         getMinus(fileString, count, colors);
-        getEh(shinyCharm, ms, sw, ob, sr, colors);
+        getEh(n, colors);
     }
 }

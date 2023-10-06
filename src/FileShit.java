@@ -41,11 +41,12 @@ public class FileShit extends JFrame
         f.add(enterFilename);
     }
 
-    private static void getEnter(int shinyCharm, int ms, int sw, int ob, int sr, Color colors[]) {
+    private static void getEnter(int n, Color colors[]) {
         JButton enter = new JButton("Enter");
         enter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
-                String fileString = (".\\hunts\\" + enterFilename.getText() + ".txt");
+                //String fileString = ("./hunts/" + enterFilename.getText() + ".txt"); //LINUX
+                String fileString = (".\\hunts\\" + enterFilename.getText() + ".txt"); //WINDOWS
                 File file = new File(fileString);
                 File folder = new File("hunts");
                 folder.mkdir();
@@ -57,7 +58,7 @@ public class FileShit extends JFrame
                     }
                     f.dispose();
                     new Counter();
-                    Counter.main(shinyCharm, ms, sw, ob, sr, fileString, colors);
+                    Counter.main(n, fileString, colors);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -72,11 +73,11 @@ public class FileShit extends JFrame
         f.add(enter);
     }
 
-    public static void main(int shinyCharm, int ms, int sw, int ob, int sr, Color colors[]) {
+    public static void main(int n, Color colors[]) {
         setDisplay(colors);
         enterFilenameLabel(colors);
         enterFilename(colors);
-        getEnter(shinyCharm, ms, sw, ob, sr, colors);
+        getEnter(n, colors);
     }
 
     public void actionPerformed(ActionEvent e) {
