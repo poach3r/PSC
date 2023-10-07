@@ -13,7 +13,7 @@ public class PickMethodGen4 extends JFrame
     private static void setLayout(Color colors[]) {
         Container c = f.getContentPane();
         c.setBackground(colors[0]);
-        f.setSize(216, 190);
+        f.setSize(216, 191);
         f.setLayout(null); 
         f.setVisible(true);
         f.setDefaultCloseOperation(EXIT_ON_CLOSE);
